@@ -32,7 +32,7 @@ import subprocess
 import requests
 from docopt import docopt
 
-from wonderful_bing import __version__
+#from wonderful_bing import __version__
 
 
 class Bing(object):
@@ -70,7 +70,8 @@ class Computer(object):
              "picture-uri file://{0}"): ['gnome', 'gnome2', 'cinnamon'],
             ("DISPLAY=:0 GSETTINGS_BACKEND=dconf "
              "/usr/bin/gsettings set org.mate.background "
-             "picture-filename '{0}'"): ['mate'],
+             "picture-filename '{0}'"): ['mate'],          
+            ("DISPLAY=:0 feh --bg-scale '{0}'"): ['feh'],                  
             ("DISPLAY=:0 xfconf-query -c xfce4-desktop "
              "-p /backdrop/screen0/monitor0/image-path -s {0}"): ['xfce4'],
         }
@@ -151,7 +152,7 @@ class WonderfulBing(object):
 
 
 def main():
-    arguments = docopt(__doc__, version=__version__)
+    arguments = docopt(__doc__, version='nj')
     if not path.exists(arguments['--directory']):
         sys.exit('No such directory :(')
 
